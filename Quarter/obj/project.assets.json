@@ -10145,11 +10145,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ayten\\source\\repos\\Quarter\\Quarter\\Quarter.csproj",
+      "projectUniqueName": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\Quarter.csproj",
       "projectName": "Quarter",
-      "projectPath": "C:\\Users\\Ayten\\source\\repos\\Quarter\\Quarter\\Quarter.csproj",
+      "projectPath": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\Quarter.csproj",
       "packagesPath": "C:\\Users\\Ayten\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ayten\\source\\repos\\Quarter\\Quarter\\obj\\",
+      "outputPath": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ayten\\AppData\\Roaming\\NuGet\\NuGet.Config",

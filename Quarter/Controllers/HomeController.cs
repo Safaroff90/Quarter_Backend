@@ -19,6 +19,7 @@ namespace Quarter.Controllers
             HomeViewModel homeVM = new HomeViewModel
             {
                 Sliders = _context.Sliders.OrderBy(x => x.Order).ToList(),
+                Features = _context.Features.ToList()
             };
             return View(homeVM);
         }
