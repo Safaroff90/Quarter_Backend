@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3g9vTRgRULhwy8DADPDNU0/633rtYezbtpc6VwFCLPs=",
+  "Hash": "iiW4sBbmH+Az4SYOx/pFdx1Lsca+Fy8jHl9nYk/JvpE=",
   "Source": "Quarter",
   "BasePath": "_content/Quarter",
   "Mode": "Default",
@@ -6067,6 +6067,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\assets\\js\\main.js"
+    },
+    {
+      "Identity": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\Admin\\assets\\js\\main-2.js",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "Admin/assets/js/main-2.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\assets\\js\\main-2.js"
     },
     {
       "Identity": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\Admin\\assets\\js\\pages\\dashboard.js",
@@ -12510,6 +12527,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\sass\\style.scss"
+    },
+    {
+      "Identity": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\uploads\\sliders\\house.png",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "uploads/sliders/house.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\sliders\\house.png"
+    },
+    {
+      "Identity": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\uploads\\sliders\\Slide-1.png",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "uploads/sliders/Slide-1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\sliders\\Slide-1.png"
     },
     {
       "Identity": "C:\\Users\\Ayten\\Desktop\\quarter\\Quarter\\wwwroot\\webfonts\\fa-brands-400.eot",

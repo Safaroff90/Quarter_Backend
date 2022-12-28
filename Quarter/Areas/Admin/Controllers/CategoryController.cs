@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Asn1.Cmp;
 using Quarter.DAL;
 using Quarter.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Quarter.Areas.Admin.Controllers
 {
@@ -53,8 +54,12 @@ namespace Quarter.Areas.Admin.Controllers
             Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
 
 
+
             return View(category);
         }
+
+
+
         [HttpPost]
         public IActionResult Edit(Category category)
         {
@@ -63,16 +68,38 @@ namespace Quarter.Areas.Admin.Controllers
                 return View();
             }
 
-            if(_context.Categories.Any(x=>x.Name == category.Name && x.Id != category.Id))
+
+            if (_context.Categories.Any(x => x.Name == category.Name && x.Id != category.Id))
             {
                 ModelState.AddModelError("Name", "This category has already been created");
                 return View();
             }
 
-            Category exisCtategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id);
+            Category existCategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id);
 
-            exisCtategory.Name = category.Name;
+            existCategory.Name = category.Name;
             _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Category category = _context.Categories.Include(x => x.Houses).FirstOrDefault(x => x.Id == id);
+
+            return View(category);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Category category)
+        {
+            Category existCategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id);
+
+            if(!_context.Houses.Any(x=> x.CategoryId == category.Id))
+            {
+                _context.Categories.Remove(existCategory);
+                _context.SaveChanges();
+            }
 
             return RedirectToAction("index");
         }

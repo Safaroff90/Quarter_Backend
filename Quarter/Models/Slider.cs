@@ -23,7 +23,7 @@ namespace Quarter.Models
         public string? BtnUrl { get; set; }
         [MaxLength(150)]
         public string? BtnUrl2 { get; set; }
-        public int? Order { get; set; }
+        public int Order { get; set; }
         [MaxLength(100)]
         public string? Icon { get; set; }
 
