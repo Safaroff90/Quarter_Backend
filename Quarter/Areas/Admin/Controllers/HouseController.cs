@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Quarter.DAL;
-
+using Quarter.Areas.Admin.ViewModels;
+using Quarter.Helpers;
+using Quarter.Models;
 namespace Quarter.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -14,9 +17,16 @@ namespace Quarter.Areas.Admin.Controllers
             _context = context;
             _env = env;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View();
+            var query = _context.Houses
+                .Include(x => x.Category)
+                .Include(x => x.Realtor)
+                .Include(x => x.HouseImages);
+
+
+            var model = PaginatedList<House>.Create(query, page, 4);
+            return View(model);
         }
     }
 }

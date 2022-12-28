@@ -1,7 +1,78 @@
-﻿
+﻿@model PaginatedList<House>
 @{
     ViewData["Title"] = "Index";
+
+    int counter = (Model.PageIndex - 1) * Model.PageSize;
 }
 
-<h1>Index</h1>
+<div class="row justify-content-between align-content-center">
+    <div class="col-md-4">
+        <h1 class="m-0">Books</h1>
+    </div>
+    <div class="col-md-3 d-flex align-items-center">
+        <a asp-action="create" class="btn btn-primary">Create</a>
+    </div>
 
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Realtor</th>
+                    <th scope="col">SalePrice</th>
+                    <th scope="col">CostPrice</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    counter++;
+                    <tr>
+                        <th scope="row">@counter</th>
+                        <td>@item.Title</td>
+                        <td>@item.Category.Name</td>
+                        <td>@item.Realtor.FullName</td>
+                        <td>@item.SalePrice</td>
+                        <td>@item.CostPrice</td>
+                        <td>@item.DiscountPercent</td>
+                        <td><img width="100" src="~/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" /></td>
+                        <td>
+                            <a class="btn" asp-action="edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square h3 text-info"></i></a>
+                            <a class="btn trash-btn" asp-action="delete" asp-route-id="@item.Id"><i class="bi bi-trash3 h3 text-danger"></i> </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(!Model.HasPrevious?"disabled":"")">
+                        <a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex-1)" tabindex="-1">Previous</a>
+                    </li>
+                    @for (var i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i==Model.PageIndex?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@i">@i</a></li>
+                    }
+                    <li class="page-item @(!Model.HasNext?"disabled":"")">
+                        <a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex+1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+</div>
