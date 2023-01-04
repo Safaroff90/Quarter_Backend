@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Quarter.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Quarter.Models
 {
@@ -23,5 +24,6 @@ namespace Quarter.Models
 
         public AppUser? AppUser { get; set; }
         public List<OrderItem>? OrderItems { get; set; }
+        public OrderStatus Status { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace Quarter.Models
         public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
-        public List<House> Houses { get; set; } 
+        public List<House>? Houses { get; set; } 
     }
 }

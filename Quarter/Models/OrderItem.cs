@@ -15,7 +15,7 @@ namespace Quarter.Models
         public decimal CostPrice { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal DiscountPercent { get; set; }
-
+        public int Count { get; set; }
         public Order Order { get; set; }
         public House? House { get; set; }
     }

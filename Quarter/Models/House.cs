@@ -30,6 +30,7 @@ namespace Quarter.Models
         public bool IsSold { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal SquareFt { get; set; }
+        public bool StockStatus { get; set; }
         public bool IsNew { get; set; }
         [NotMapped]
         [MaxFileSize(2)]

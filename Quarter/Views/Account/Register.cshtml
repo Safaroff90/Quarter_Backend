@@ -1,4 +1,4 @@
-﻿
+﻿@model MemberRegisterViewModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -39,21 +39,19 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="account-login-inner">
-                    <form action="#" class="ltn__form-box contact-form-box">
-                        <input type="text" name="firstname" placeholder="First Name">
-                        <input type="text" name="lastname" placeholder="Last Name">
-                        <input type="text" name="email" placeholder="Email*">
-                        <input type="password" name="password" placeholder="Password*">
-                        <input type="password" name="confirmpassword" placeholder="Confirm Password*">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" value="">
-                            I consent to Herboil processing my personal data in order to send personalized marketing material in accordance with the consent form and the privacy policy.
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" value="">
-                            By clicking "create account", I consent to the privacy policy.
-                        </label>
+                    <form asp-action="register" method="post" class="ltn__form-box contact-form-box">
+                        <span class="text-danger" asp-validation-for="Fullname"></span>
+                        <input asp-for="Fullname" type="text" name="fullname" placeholder="Full Name">
+                        <span class="text-danger" asp-validation-for="Username"></span>
+                        <input asp-for="Username" type="text" name="username" placeholder="User Name">
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                        <input asp-for="Email" type="text" name="email" placeholder="Email*">
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                        <input asp-for="Password" type="password" name="password" placeholder="Password*">
+                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                        <input asp-for="ConfirmPassword" type="password" name="confirmpassword" placeholder="Confirm Password*">
                         <div class="btn-wrapper">
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                             <button class="theme-btn-1 btn reverse-color btn-block" type="submit">CREATE ACCOUNT</button>
                         </div>
                     </form>
@@ -70,3 +68,7 @@
     </div>
 </div>
 <!-- LOGIN AREA END -->
+@section Scripts{
+    @Html.Partial("_ValidationScriptsPartial");
+}
+

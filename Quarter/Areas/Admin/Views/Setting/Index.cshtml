@@ -1,0 +1,31 @@
+﻿@model List<Setting>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between mx-2">
+        <h3><b>Settings</b></h3>
+    </div>
+    <div class="row">
+        <table class="table table-hover text-center align-items-center">
+            <thead>
+                <tr class="bg-light">
+                    <th class="col-md-2 text-center">Key</th>
+                    <th class="col-md-2 text-center">Value</th>
+                    <th class="col-md-1 text-center">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var setting in Model)
+                {
+                    <tr>
+                        <td class="col-md-1">@setting.Key</td>
+                        <td class="col-md-1">@setting.Value</td>
+                        <td>
+                            <a class="btn" asp-action="edit" asp-route-id="@setting.Id" asp-route-key="@setting.Key"><i class="bi bi-pencil-square h3 text-info"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

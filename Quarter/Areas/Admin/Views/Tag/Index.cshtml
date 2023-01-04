@@ -1,0 +1,74 @@
+﻿@model List<Tag>
+@{
+    ViewData["Title"] = "Index";
+    int selectedPage = ViewBag.Page;
+    int totalPage = ViewBag.TotalPage;
+    int order = (selectedPage - 1) * 2;
+}
+<headd>
+    <link rel="stylesheet" href="~/css/font-icons.css">
+</headd>
+
+<div class="row justify-content-between align-content-center">
+    <div class="col-md-4">
+        <h1 class="m-0 text-info">Tags</h1>
+    </div>
+    <div class="col-md-3 d-flex align-items-center">
+        <a asp-action="create" class="btn"><i class="bi bi-clipboard-plus-fill text-info h1"></i></a>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Icon</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    order++;
+                    <tr>
+                        <th scope="row">@order</th>
+                        <td><i class="@item.Icon"></i></td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a class="btn" asp-action="edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square h3 text-info"></i></a>
+                            <a class="btn" asp-action="delete" asp-route-id="@item.Id"><i class="bi bi-trash3 h3 text-danger"></i> </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)" tabindex="-1">Previous</a>
+                    </li>
+                    @for (var i = 1; i <= totalPage; i++)
+                    {
+                        <li class="page-item @(i==selectedPage?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@i">@i</a></li>
+                    }
+                    <li class="page-item">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+</div>
+
+

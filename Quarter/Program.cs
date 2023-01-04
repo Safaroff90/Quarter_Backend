@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Quarter.DAL;
+using Quarter.Models;
 using Quarter.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +12,35 @@ builder.Services.AddDbContext<QuarterContext>(opt =>
 {
     opt.UseSqlServer(@"SERVER=SAFAROFF\SQLEXPRESS01;Database=Quarter;Trusted_Connection=TRUE");
 });
+
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    opt.Password.RequireDigit = false;
+    opt.Password.RequiredLength = 8;
+    opt.Password.RequireNonAlphanumeric = false;
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<QuarterContext>();
+
 builder.Services.AddScoped<LayoutService>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Events.OnRedirectToAccessDenied = options.Events.OnRedirectToLogin = context =>
+    {
+        if (context.HttpContext.Request.Path.Value.StartsWith("/Admin"))
+        {
+            var redirectPath = new Uri(context.RedirectUri);
+            context.Response.Redirect("/Admin/account/login" + redirectPath.Query);
+        }
+        else
+        {
+            var redirectPath = new Uri(context.RedirectUri);
+            context.Response.Redirect("/account/login" + redirectPath.Query);
+        }
+
+        return Task.CompletedTask;
+    };
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

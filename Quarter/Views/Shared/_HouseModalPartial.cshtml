@@ -1,0 +1,66 @@
+﻿@model House
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <!-- <i class="fas fa-times"></i> -->
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="ltn__quick-view-modal-inner">
+            <div class="modal-product-item">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="modal-product-img">
+                            <img src=~/uploads/houses/@Model.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image style="width:450px; height:300px">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="modal-product-info">
+                            <h3><a href="product-details.html">@Model.Title</a></h3>
+                            <div class="product-price">
+                                @if (Model.DiscountPercent > 0)
+                                {
+                                    <span class="price">$@((Model.SalePrice * (100 - Model.DiscountPercent) / 100).ToString("0.00"))</span>
+                                    <del class="price-old">$@Model.SalePrice</del>
+                                    <span class="price-discount">@Model.DiscountPercent.ToString("0.##")%</span>
+                                }
+                                else
+                                {
+                                    <span class="price">$@Model.SalePrice</span>
+                                }
+                            </div>
+                            <hr>
+                            <div class="modal-product-brief">
+                                <p>@Html.Raw(@Model.Desc)</p>
+                            </div>
+
+                            <div class="ltn__product-details-menu-3">
+                                <ul>
+                                    <li>
+                                        <a asp-action="addtowishList" asp-controller="house" asp-route-bookId="@Model.Id " title="Wishlist" class="add-to-wishList">
+                                            <i class="far fa-heart"></i>
+                                            <span>Add to Wishlist</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="ltn__social-media">
+                                <ul>
+                                    <li>Share:</li>
+                                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+
+                                </ul>
+                            </div>
+                            <label class="float-end mb-0"><a class="text-decoration" asp-controller="house" asp-action="detail" asp-route-id="@Model.Id"><small>View Details</small></a></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

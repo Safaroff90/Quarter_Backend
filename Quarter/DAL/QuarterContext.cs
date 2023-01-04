@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Quarter.Models;
 
 namespace Quarter.DAL
 {
-    public class QuarterContext:DbContext
+    public class QuarterContext: IdentityDbContext
     {
         public QuarterContext(DbContextOptions<QuarterContext> options): base(options)
         {
